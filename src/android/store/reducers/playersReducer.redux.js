@@ -1,7 +1,13 @@
 var initialState = function() {
   return state = {
-    player1Name: '',
-    player2Name: '',
+    player1: {
+      name: '',
+      turn: true,
+    },
+    player2: {
+      name: '',
+      turn: false,
+    }
   }
 }
 
@@ -12,8 +18,14 @@ var players = function(state, action) {
   switch (action.type) {
     case 'STORE_PLAYER_NAMES':
       return Object.assign({}, state, {
-        player1Name: action.player1Name,
-        player2Name: action.player2Name,
+        player1: {
+          name: action.player1Name,
+          turn: state.player1.turn,
+        },
+        player2: {
+          name: action.player2Name,
+          turn: state.player2.turn,
+        },
       });
     default:
       return state;

@@ -3,9 +3,10 @@ import Redux, { bindActionCreators } from 'redux';
 import { connect } from 'react-redux/native';
 import globalStyles from '../globalStyleVars.js';
 import PlayerActions from '../actions/playerActions.redux.js';
+import NameBar from './nameBar.react.js';
+import Grid from './grid.react.js';
 
 function mapStateToProps(state) {
-  console.log('STATE: ', state);
   return {
     players: state.players
   }
@@ -19,7 +20,6 @@ function mapDispatchToProps(dispatch) {
 
 var gameView = React.createClass({
   render: function() {
-    console.log('PROPS: ', this.props);
     return (
       <View style={styles.container} >
         <View style={styles.titleBar} >
@@ -32,7 +32,10 @@ var gameView = React.createClass({
           </TouchableHighlight>
           <Text style={styles.title} >Tic Tac Toe</Text>
         </View>
-        
+        <NameBar />
+        <View style={styles.gridContainer}>
+          <Grid />
+        </View>
       </View>
     )
   },
@@ -73,6 +76,12 @@ var styles = StyleSheet.create({
   title: {
     flex: 6,
     fontSize: 25,
+  },
+  gridContainer: {
+    flex: 1,
+    backgroundColor: globalStyles.colors.white,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 
