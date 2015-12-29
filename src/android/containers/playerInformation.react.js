@@ -71,9 +71,13 @@ var playerInformation = React.createClass({
   _startNewGame: function() {
     console.log('starting new game');
     players = {
-      player1Name: this.state.player1Name,
-      player2Name: this.state.player2Name
-    }
+      player1: {
+        name: this.state.player1Name,
+      },
+      player2: {
+        name: this.state.player2Name,
+      },
+    };
     this.props.playerActions.storePlayerNames(players);
     this.props.navigator.push({name: 'GAME'});
   },

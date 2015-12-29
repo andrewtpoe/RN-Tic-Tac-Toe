@@ -1,4 +1,5 @@
-import React, { BackAndroid, Navigator, StyleSheet, Text, TouchableHighlight, View, } from 'react-native';
+import React, { BackAndroid, Navigator, StyleSheet} from 'react-native';
+import Orientation from 'react-native-orientation';
 import MainMenu from './mainMenu.react.js';
 import PlayerInformation from './playerInformation.react.js';
 import Game from './game.react.js';
@@ -32,6 +33,10 @@ var Router = function(route, navigationOperations, onComponentRef) {
 };
 
 var app = React.createClass({
+  componentDidMount: function() {
+    Orientation.lockToPortrait();
+  },
+
   render: function() {
     var initialRoute = {name: 'MAIN_MENU'};
     return (

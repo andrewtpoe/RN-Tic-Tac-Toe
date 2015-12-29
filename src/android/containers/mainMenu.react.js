@@ -1,4 +1,4 @@
-import React, { StyleSheet, Text, TouchableHighlight, View, } from 'react-native';
+import React, { StyleSheet, Text, View, } from 'react-native';
 import globalStyles from '../globalStyleVars.js';
 import MenuButton from '../components/menu/menuButton.react.js';
 
