@@ -14,6 +14,12 @@ var gameActions = {
     }
   },
 
+  clearGrid: function() {
+    return {
+      type: 'CLEAR_GRID',
+    }
+  }
+
 };
 
 export default gameActions;

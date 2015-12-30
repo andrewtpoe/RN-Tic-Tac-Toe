@@ -2,19 +2,19 @@ import React, { StyleSheet, Text, TextInput, TouchableHighlight, View, } from 'r
 import Redux, { bindActionCreators } from 'redux';
 import { connect } from 'react-redux/native';
 import globalStyles from '../globalStyleVars.js';
-import PlayerActions from '../actions/playerActions.redux.js';
+import GameActions from '../actions/gameActions.redux.js';
 import NameBar from './nameBar.react.js';
 import Grid from './grid.react.js';
 
 function mapStateToProps(state) {
   return {
-    players: state.players
+    // players: state.players
   }
 };
 
 function mapDispatchToProps(dispatch) {
   return {
-    playerActions: bindActionCreators(PlayerActions, dispatch)
+    gameActions: bindActionCreators(GameActions, dispatch),
   }
 };
 
@@ -36,12 +36,25 @@ var gameView = React.createClass({
         <View style={styles.gridContainer}>
           <Grid />
         </View>
+        <View style={styles.bottomContainer} >
+          <TouchableHighlight
+            style={styles.clearGridButton}
+            activeOpacity={1}
+            underlayColor={globalStyles.colors.six}
+            onPress={this._clearGrid} >
+            <Text style={styles.clearGridButtonText} >Clear</Text>
+          </TouchableHighlight>
+        </View>
       </View>
     )
   },
 
   _transitionToTop: function() {
     this.props.navigator.popToTop();
+  },
+
+  _clearGrid: function() {
+    this.props.gameActions.clearGrid();
   },
 
 });
@@ -82,6 +95,23 @@ var styles = StyleSheet.create({
     backgroundColor: globalStyles.colors.white,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  bottomContainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    height: 60,
+  },
+  clearGridButton: {
+    alignItems: 'center',
+    right: 0,
+    height: 40,
+    margin: 10,
+    paddingVertical: 5,
+    paddingHorizontal: 10,
+    borderRadius: 3,
+  },
+  clearGridButtonText: {
+    fontSize: 20,
   },
 });
 

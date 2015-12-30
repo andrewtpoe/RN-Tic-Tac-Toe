@@ -6,33 +6,42 @@ import globalStyles from '../globalStyleVars.js';
 
 function mapStateToProps(state) {
   return {
-    players: state.players
+    players: state.players,
+    game: state.game,
   }
 };
 
 function mapDispatchToProps(dispatch) {
   return {
-    playerActions: bindActionCreators(PlayerActions, dispatch)
   }
 };
 
 var nameBar = React.createClass({
   render: function() {
     console.log('Players: ', this.props.players);
-    var player1 = this.props.players.player1,
+    var game = this.props.game,
+        player1 = this.props.players.player1,
         player2 = this.props.players.player2;
     return (
       <View style={styles.container}>
-        {this._playerHeader(player1, 'X')}
-        {this._playerHeader(player2, 'O')}
+        {this._playerHeader1(game, player1, 'X')}
+        {this._playerHeader2(game, player2, 'O')}
       </View>
     )
   },
 
-  _playerHeader: function(player, mark) {
+  _playerHeader1: function(game, player, mark) {
     return (
-      <View style={(player.turn) ? styles.playerHeaderTurn : styles.playerHeader} >
-        <Text style={(player.turn) ? styles.playerHeaderTextTurn : styles.playerHeaderText} >{player.name + ' (' + mark + ')'}</Text>
+      <View style={(game.player1Turn) ? styles.playerHeaderTurn : styles.playerHeader} >
+        <Text style={(game.player1Turn) ? styles.playerHeaderTextTurn : styles.playerHeaderText} >{player.name + ' (' + mark + ')'}</Text>
+      </View>
+    )
+  },
+
+  _playerHeader2: function(game, player, mark) {
+    return (
+      <View style={(game.player1Turn) ? styles.playerHeader : styles.playerHeaderTurn} >
+        <Text style={(game.player1Turn) ? styles.playerHeaderText : styles.playerHeaderTextTurn} >{player.name + ' (' + mark + ')'}</Text>
       </View>
     )
   },

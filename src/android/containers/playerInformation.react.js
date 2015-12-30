@@ -19,8 +19,8 @@ function mapDispatchToProps(dispatch) {
 var playerInformation = React.createClass({
   getInitialState: function() {
     return ({
-      player1Name: '',
-      player2Name: '',
+      player1Name: this.props.players.player1.name,
+      player2Name: this.props.players.player2.name,
     })
   },
 

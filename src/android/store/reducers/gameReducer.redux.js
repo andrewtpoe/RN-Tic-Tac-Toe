@@ -21,6 +21,11 @@ var game = function(state, action) {
         player2Marks: state.player2Marks += action.gridElementId,
         player1Turn: true,
       });
+    case 'CLEAR_GRID':
+      return Object.assign({}, state, {
+        player1Marks: [],
+        player2Marks: [],
+      });
     default:
       return state;
   }
