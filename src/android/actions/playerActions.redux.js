@@ -1,11 +1,10 @@
 var playerActions = {
 
-  storePlayerNames: function(object) {
-    console.log('Player Action: storePlayerNames triggered with ', object);
+  storePlayerNames: function(players) {
     return {
       type: 'STORE_PLAYER_NAMES',
-      player1Name: object.player1.name,
-      player2Name: object.player2.name,
+      player1Name: players.player1.name,
+      player2Name: players.player2.name,
     }
   },
 

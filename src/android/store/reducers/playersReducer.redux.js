@@ -2,11 +2,11 @@ var initialState = function() {
   return state = {
     player1: {
       name: '',
-      turn: true,
+      wins: 0,
     },
     player2: {
       name: '',
-      turn: false,
+      wins: 0,
     }
   }
 }
@@ -20,11 +20,11 @@ var players = function(state, action) {
       return Object.assign({}, state, {
         player1: {
           name: action.player1Name,
-          turn: state.player1.turn,
+          wins: state.player1.wins,
         },
         player2: {
           name: action.player2Name,
-          turn: state.player2.turn,
+          wins: state.player2.wins,
         },
       });
     default:

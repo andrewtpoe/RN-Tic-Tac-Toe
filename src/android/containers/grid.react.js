@@ -34,7 +34,6 @@ var grid = React.createClass({
   },
 
   _createGridElement: function(id) {
-    console.log(id);
     return (
       <TouchableHighlight
         style={styles.gridElement}
@@ -43,13 +42,32 @@ var grid = React.createClass({
         onPress={() => this._markGridElement(id)}
         ref={id}
         key={id} >
-        <Text ></Text>
+        <Text style={styles.gridElementText} >{this._displayGridElement(id)}</Text>
       </TouchableHighlight>
     )
   },
 
+  _displayGridElement: function(id) {
+    if (this.props.game.player1Marks.indexOf(id) >= 0) {
+      return 'X';
+    } else if (this.props.game.player2Marks.indexOf(id) >= 0) {
+      return 'O';
+    } else {
+      return false;
+    };
+  },
+
   _markGridElement: function(id) {
     console.log('Element pressed: ', id);
+    if (this.props.game.player1Marks.indexOf(id) < 0 && this.props.game.player2Marks.indexOf(id) < 0) {
+      if (this.props.game.player1Turn) {
+        console.log('Marking ', id, 'for Player 1');
+        this.props.gameActions.storePlayer1Mark(id);
+      } else {
+        console.log('Marking ', id, 'for Player 2');
+        this.props.gameActions.storePlayer2Mark(id);
+      }
+    }
   },
 
 });
@@ -72,7 +90,12 @@ var styles = StyleSheet.create({
     height: ((Dimensions.get('window').width - 50) / 3),
     margin: 5,
     borderRadius: 5,
-  }
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  gridElementText: {
+    fontSize: ((Dimensions.get('window').width - 50) / 3) ,
+  },
 });
 
 export default connect(
