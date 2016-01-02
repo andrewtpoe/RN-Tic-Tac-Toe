@@ -43,13 +43,17 @@ var playerInformation = React.createClass({
             <Text style={styles.playerInformationTitle} >
               Player 1 (X)
             </Text>
-            <TextInput style={styles.playerInformationInput} value={this.state.player1Name} onChangeText={(text) => this.setState({player1Name: text})} autoCapitalize='words' />
+            <View style={styles.playerInformationInput} >
+              <TextInput style={styles.playerInformationInputText} value={this.state.player1Name} onChangeText={(text) => this.setState({player1Name: text})} autoCapitalize='words' />
+            </View>
           </View>
           <View style={styles.playerInformationContainer} >
             <Text style={styles.playerInformationTitle} >
               Player 2 (O)
             </Text>
-            <TextInput style={styles.playerInformationInput} value={this.state.player2Name} onChangeText={(text) => this.setState({player2Name: text})} autoCapitalize='words' />
+            <View style={styles.playerInformationInput} >
+              <TextInput style={styles.playerInformationInputText} value={this.state.player2Name} onChangeText={(text) => this.setState({player2Name: text})} autoCapitalize='words' />
+            </View>
           </View>
         </View>
         <View style={styles.startButtonContainer} >
@@ -131,13 +135,16 @@ var styles = StyleSheet.create({
     fontSize: 25,
   },
   playerInformationInput: {
-    height: 40,
-    padding: 10,
-    backgroundColor: globalStyles.colors.two,
-    borderColor: globalStyles.colors.three,
-    borderWidth: 1,
+    height: 50,
+    paddingHorizontal: 10,
+    backgroundColor: globalStyles.colors.half,
+    shadowColor: globalStyles.colors.five,
+    elevation: 8,
+    alignItems: 'center',
     borderRadius: 5,
-    // width: '60%',
+  },
+  playerInformationInputText: {
+    fontSize: 20,
   },
   startContainer: {
     flex: 1,

@@ -11,6 +11,8 @@ To run Android version locally:
 
 ## Current Status:
 
+### 2016/01/02:
+  - Android app Alpha is now complete. On app opening, user is taken to input screen to add player names. Opening screen will be changed to game type menu when 1 player mode is enabled. When game is won, a banner pops up across grid that says who won, and the 'Clear' button changes to 'New Game'.
 ### 2015/12/29:
   - Android App opens to main menu (with one button), allows users to enter their name, and displays a blank "Game" screen. iOS not currently operational.
 
@@ -33,3 +35,10 @@ Contributions are welcome.
 Please fork the repository, create a new branch with your updates, push it to GitHub, and submit a pull request to master.
 
 You can also submit an Issue if you find something that doesn't work quite right.
+
+## ToDo:
+
+  - Animations on changes need improvement
+  - Add score counter to names
+  - Improve navigation
+  - Refactor and/or Test code
