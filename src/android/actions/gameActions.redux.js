@@ -14,9 +14,27 @@ var gameActions = {
     }
   },
 
-  clearGrid: function() {
+  cycleTurn: function(player1Turn) {
+    var tf;
+    player1Turn ? tf = false : tf = true;
     return {
-      type: 'CLEAR_GRID',
+      type: 'CYCLE_TURN',
+      player1Turn: tf,
+    }
+  },
+
+  winner: function(who) {
+    who == 'player1' ? p1w = true : p1w = false;
+    return{
+      type: 'WINNER',
+      gameOver: true,
+      player1Wins: p1w,
+    }
+  },
+
+  clearGame: function() {
+    return {
+      type: 'CLEAR_GAME',
     }
   }
 

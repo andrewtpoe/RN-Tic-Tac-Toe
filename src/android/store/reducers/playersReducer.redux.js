@@ -12,7 +12,7 @@ var initialState = function() {
 }
 
 var players = function(state, action) {
-  console.log('players reducer triggered with state ', state, 'and action', action);
+  // console.log('players reducer triggered with state ', state, 'and action', action);
 
   state = state || initialState();
   switch (action.type) {

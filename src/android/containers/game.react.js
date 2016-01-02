@@ -8,6 +8,7 @@ import Grid from './grid.react.js';
 
 function mapStateToProps(state) {
   return {
+    game: state.game
     // players: state.players
   }
 };
@@ -18,18 +19,19 @@ function mapDispatchToProps(dispatch) {
   }
 };
 
+// <TouchableHighlight
+//   style={styles.returnButton}
+//   activeOpacity={1}
+//   underlayColor={globalStyles.colors.six}
+//   onPress={this._transitionToTop} >
+//   <Text style={styles.returnButtonText} >{'< Menu'}</Text>
+// </TouchableHighlight>
+
 var gameView = React.createClass({
   render: function() {
     return (
       <View style={styles.container} >
         <View style={styles.titleBar} >
-          <TouchableHighlight
-            style={styles.returnButton}
-            activeOpacity={1}
-            underlayColor={globalStyles.colors.six}
-            onPress={this._transitionToTop} >
-            <Text style={styles.returnButtonText} >{'< Menu'}</Text>
-          </TouchableHighlight>
           <Text style={styles.title} >Tic Tac Toe</Text>
         </View>
         <NameBar />
@@ -42,7 +44,7 @@ var gameView = React.createClass({
             activeOpacity={1}
             underlayColor={globalStyles.colors.six}
             onPress={this._clearGrid} >
-            <Text style={styles.clearGridButtonText} >Clear</Text>
+            <Text style={styles.clearGridButtonText} >{this._buildClearTag()}</Text>
           </TouchableHighlight>
         </View>
       </View>
@@ -54,7 +56,15 @@ var gameView = React.createClass({
   },
 
   _clearGrid: function() {
-    this.props.gameActions.clearGrid();
+    this.props.gameActions.clearGame();
+  },
+
+  _buildClearTag: function() {
+    if (this.props.game.gameOver) {
+      return 'New Game';
+    } else {
+      return 'Clear';
+    }
   },
 
 });
@@ -87,6 +97,7 @@ var styles = StyleSheet.create({
     color: globalStyles.colors.link,
   },
   title: {
+    textAlign: 'center',
     flex: 6,
     fontSize: 25,
   },

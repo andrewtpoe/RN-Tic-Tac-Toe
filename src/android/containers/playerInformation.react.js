@@ -16,6 +16,14 @@ function mapDispatchToProps(dispatch) {
   }
 };
 
+// <TouchableHighlight
+//   style={styles.returnButton}
+//   activeOpacity={1}
+//   underlayColor={globalStyles.colors.six}
+//   onPress={this._transitionBack} >
+//   <Text style={styles.returnButtonText} >{'< Menu'}</Text>
+// </TouchableHighlight>
+
 var playerInformation = React.createClass({
   getInitialState: function() {
     return ({
@@ -28,14 +36,7 @@ var playerInformation = React.createClass({
     return (
       <View style={styles.container} >
         <View style={styles.titleBar} >
-          <TouchableHighlight
-            style={styles.returnButton}
-            activeOpacity={1}
-            underlayColor={globalStyles.colors.six}
-            onPress={this._transitionBack} >
-            <Text style={styles.returnButtonText} >{'< Menu'}</Text>
-          </TouchableHighlight>
-          <Text style={styles.title} >Player Information</Text>
+          <Text style={styles.title} >Tic Tac Toe</Text>
         </View>
         <View style={styles.inputContainer} >
           <View style={styles.playerInformationContainer} >
@@ -69,7 +70,6 @@ var playerInformation = React.createClass({
   },
 
   _startNewGame: function() {
-    console.log('starting new game');
     players = {
       player1: {
         name: this.state.player1Name,
@@ -112,13 +112,15 @@ var styles = StyleSheet.create({
     color: globalStyles.colors.link,
   },
   title: {
+    textAlign: 'center',
     flex: 6,
     fontSize: 25,
   },
   inputContainer: {
+    top: 0,
     flex: 6,
-    alignItems: 'center',
-    justifyContent: 'center',
+    // alignItems: 'center',
+    // justifyContent: 'center',
   },
   playerInformationContainer: {
     margin: 20,

@@ -18,7 +18,6 @@ function mapDispatchToProps(dispatch) {
 
 var nameBar = React.createClass({
   render: function() {
-    console.log('Players: ', this.props.players);
     var game = this.props.game,
         player1 = this.props.players.player1,
         player2 = this.props.players.player2;

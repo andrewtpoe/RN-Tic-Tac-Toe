@@ -38,7 +38,7 @@ var app = React.createClass({
   },
 
   render: function() {
-    var initialRoute = {name: 'MAIN_MENU'};
+    var initialRoute = {name: 'PLAYER_INFORMATION'};
     return (
       <Navigator
         style={styles.container}
