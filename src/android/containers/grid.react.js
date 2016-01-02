@@ -59,9 +59,7 @@ var grid = React.createClass({
   },
 
   _buildWinnerBanner: function() {
-
     if (this.props.game.gameOver) {
-      console.log('displaying winner banner');
       return (
         <View style={styles.banner} >
           <Text style={styles.bannerText} >
@@ -85,10 +83,8 @@ var grid = React.createClass({
   _markGridElement: function(id) {
     if (!this.props.game.gameOver && this.props.game.player1Marks.indexOf(id) < 0 && this.props.game.player2Marks.indexOf(id) < 0) {
       if (this.props.game.player1Turn) {
-        console.log('Marking ', id, 'for Player 1');
         this.props.gameActions.storePlayer1Mark(id);
       } else {
-        console.log('Marking ', id, 'for Player 2');
         this.props.gameActions.storePlayer2Mark(id);
       }
       this._checkWinner();
@@ -96,7 +92,6 @@ var grid = React.createClass({
   },
 
   _checkWinner: function() {
-    console.log('Evaluating winner');
     var i = 0,
         marks,
         self = this,
@@ -113,20 +108,16 @@ var grid = React.createClass({
       winner = true
     };
     if (winner && this.props.game.player1Turn) {
-      console.log('PLAYER 1 WINS');
       this.props.gameActions.winner('player1');
     } else if (winner && !this.props.game.player1Turn) {
-      console.log('PLAYER 2 WINS!');
       this.props.gameActions.winner('player2');
     } else {
-      console.log('NO WINNER');
       this.props.gameActions.cycleTurn(this.props.game.player1Turn);
     };
   },
 
   _evaluateMarks: function(char, marks) {
     if (marks.split(char).length === 4) {
-      console.log('WIN 1');
       return true;
     } else {
       return false;
@@ -135,10 +126,8 @@ var grid = React.createClass({
 
   _diagonalWinner: function(marks) {
     if (marks.indexOf('B2') >= 0 && marks.indexOf('A1') >= 0 && marks.indexOf('C3') >= 0) {
-      console.log('WIN 2');
       return true;
     } else if (marks.indexOf('B2') >= 0 && marks.indexOf('A3') >= 0 && marks.indexOf('C1') >= 0) {
-      console.log('WIN 3');
       return true;
     } else {
       return false;
