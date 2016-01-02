@@ -1,5 +1,5 @@
 import React, { BackAndroid, Navigator, StyleSheet} from 'react-native';
-// import Orientation from 'react-native-orientation';
+import Orientation from 'react-native-orientation';
 import MainMenu from './mainMenu.react.js';
 import PlayerInformation from './playerInformation.react.js';
 import Game from './game.react.js';
@@ -33,9 +33,9 @@ var Router = function(route, navigationOperations, onComponentRef) {
 };
 
 var app = React.createClass({
-  // componentDidMount: function() {
-  //   Orientation.lockToPortrait();
-  // },
+  componentDidMount: function() {
+    Orientation.lockToPortrait();
+  },
 
   render: function() {
     var initialRoute = {name: 'PLAYER_INFORMATION'};

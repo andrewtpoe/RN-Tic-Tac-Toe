@@ -1,6 +1,6 @@
 # Git
 #
-.git/
+.git/*
 
 # OSX
 #
@@ -30,6 +30,8 @@ project.xcworkspace
 #
 .idea
 .gradle
+gradle.properties
+*.keystore
 local.properties
 
 # node.js
