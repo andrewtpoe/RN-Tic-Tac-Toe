@@ -1,0 +1,16 @@
+{
+  "name": "TicTacToeinReactNative",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "react-native start"
+  },
+  "dependencies": {
+    "react-native": "^0.17.0",
+    "react-native-orientation": "^1.11.0",
+    "react-redux": "3.1.2",
+    "redux": "^3.0.5",
+    "redux-storage": "^1.4.1",
+    "redux-thunk": "^1.0.2"
+  }
+}
